@@ -19,7 +19,6 @@ add_executable(client-prototype
         cavokeclientmodel.cpp
         cavokeclientview.cpp
         cavokeqmlgamemodel.cpp
-        resource.qrc
         )
 
 target_link_libraries(client-prototype Qt6::Widgets)
