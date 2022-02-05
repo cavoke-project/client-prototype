@@ -102,20 +102,14 @@ Rectangle {
 
             Button {
                 text: "Hard"
-//                pressed: game.difficulty == 1.0   TODO: What is it?
-//                onClicked: { game.difficulty = 1.0 }
                 onClicked: { cavoke.sendMove("D 1.0"); }
             }
             Button {
                 text: "Moderate"
-//                pressed: game.difficulty == 0.8   TODO: What is it?
-//                onClicked: { game.difficulty = 0.8 }
                 onClicked: { cavoke.sendMove("D 0.8"); }
             }
             Button {
                 text: "Easy"
-//                pressed: game.difficulty == 0.2   TODO: What is it?
-//                onClicked: { game.difficulty = 0.2 }
                 onClicked: { cavoke.sendMove("D 0.2"); }
             }
         }

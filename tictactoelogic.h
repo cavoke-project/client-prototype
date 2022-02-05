@@ -3,6 +3,7 @@
 
 #ifndef CLIENT_PROTOTYPE_TICTACTOELOGIC_H
 #define CLIENT_PROTOTYPE_TICTACTOELOGIC_H
+#include <QtCore/QString>
 #include <random>
 #include <vector>
 
@@ -24,7 +25,9 @@ public:
 
     void randomAI();
 
-    std::vector<char> get_board();
+    QString get_board_as_string();
+    
+    QString processAction(const QString &jsonMove);
 
 private:
     bool running = false;

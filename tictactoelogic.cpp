@@ -1,4 +1,5 @@
 #include "tictactoelogic.h"
+#include <sstream>
 
 namespace tictactoe {
 
@@ -120,8 +121,38 @@ void tictactoelogic::randomAI() {
         makeMove(choice, 'O');
     }
 }
-std::vector<char> tictactoelogic::get_board() {
-    return board;
+QString tictactoelogic::get_board_as_string() {
+    return QString::fromStdString(
+        std::string(board.begin(), board.end()));  // FIXME: sounds bad
+}
+QString tictactoelogic::processAction(const QString &jsonMove) {
+    char action;
+    std::stringstream to_split(jsonMove.toStdString());
+    to_split >> action;
+    if (action == 'D') {
+        double new_d;
+        to_split >> new_d;
+        if (new_d >= 0.0 && new_d <= 1.0) {
+            difficulty = new_d;
+            return "Difficulty changed";
+        }
+    } else {
+        int pos;
+        to_split >> pos;
+        if (!(pos >= 0 && pos < 9 && canPlayAtPos(pos))) {
+            return "Invalid action";
+        }
+        makeMove(pos, 'X');
+        if (winner(board)) {
+            return "X wins";
+        }
+        computerTurn();
+        if (winner(board)) {
+            return "O wins";
+        }
+        return "Nothing or draw";
+    }
+    return "Invalid action";
 }
 
 }  // namespace tictactoe

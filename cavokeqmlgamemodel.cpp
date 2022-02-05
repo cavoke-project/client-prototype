@@ -8,7 +8,10 @@ CavokeQmlGameModel::CavokeQmlGameModel(QUrl qmlPath, QObject *parent)
 }
 
 void CavokeQmlGameModel::sendMove(const QString &jsonMove) {
+    // FIXME: Replace with JSON
     qDebug() << "c++: Received! " << jsonMove;
-    // TODO
-    emit receiveUpdate("pong");
+    QString processing_result = logic.processAction(jsonMove);
+    QString board = logic.get_board_as_string();
+    QString result = processing_result + "\n" + board;
+    emit receiveUpdate(result);
 }
