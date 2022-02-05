@@ -27,7 +27,7 @@ public:
     std::vector<char> get_board();
 
 private:
-    bool running = true;
+    bool running = false;
     double difficulty = 1.0;
     std::random_device rd;
     std::mt19937 gen;
