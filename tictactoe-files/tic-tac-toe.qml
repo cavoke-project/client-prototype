@@ -40,7 +40,7 @@
 
 import QtQuick 2.0
 import "content"
-import "content/tic-tac-toe.js" as Logic
+//import "content/tic-tac-toe.js" as Logic
 
 Rectangle {
     // BEGIN cavoke section
@@ -82,12 +82,14 @@ Rectangle {
                     height: board.height/3
 
                     onClicked: {
-                        if (game.running && Logic.canPlayAtPos(index)) {
-                            if (!Logic.makeMove(index, "X"))
-                                Logic.computerTurn();
-                        }
+                        //if (game.running && Logic.canPlayAtPos(index)) {
+                        //    if (!Logic.makeMove(index, "X"))
+                        //        Logic.computerTurn();
+                        //}
                         // TODO: some json
-                        cavoke.sendMove("Clicked on " + String(index) + "!");
+                        if (game.running) {
+                            cavoke.sendMove("Clicked on " + String(index) + "!");
+                        }
                     }
                 }
             }
@@ -123,12 +125,12 @@ Rectangle {
         font.pixelSize: 50; font.bold: true
         visible: false
 
-        Timer {
-            running: messageDisplay.visible
-            onTriggered: {
-                messageDisplay.visible = false;
-                Logic.restartGame();
-            }
-        }
+//        Timer {
+//            running: messageDisplay.visible
+//            onTriggered: {
+//                messageDisplay.visible = false;
+//                Logic.restartGame();
+//            }
+//        }
     }
 }
