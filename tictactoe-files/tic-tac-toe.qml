@@ -40,7 +40,7 @@
 
 import QtQuick 2.0
 import "content"
-//import "content/tic-tac-toe.js" as Logic
+import "content/interactions.js" as Interact
 
 Rectangle {
     // BEGIN cavoke section
@@ -49,15 +49,12 @@ Rectangle {
 
         function onReceiveUpdate(jsonUpdate) {
             console.log("Received: " + jsonUpdate);
-            // TODO: connect UI
+            Interact.processResponse(jsonUpdate);
         }
     }
     // END cavoke section
 
     id: game
-
-    property bool running: true
-    property real difficulty: 1.0   //chance it will actually think
 
     width: display.width; height: display.height + 10
 
@@ -82,15 +79,7 @@ Rectangle {
                     height: board.height/3
 
                     onClicked: {
-                        //if (game.running && Logic.canPlayAtPos(index)) {
-                        //    if (!Logic.makeMove(index, "X"))
-                        //        Logic.computerTurn();
-                        //}
-                        // TODO: some json
-                        if (game.running) {
-//                            cavoke.sendMove("Clicked on " + String(index) + "!");
                             cavoke.sendMove("M " + String(index));
-                        }
                     }
                 }
             }
@@ -123,12 +112,12 @@ Rectangle {
         font.pixelSize: 50; font.bold: true
         visible: false
 
-//        Timer {
-//            running: messageDisplay.visible
-//            onTriggered: {
-//                messageDisplay.visible = false;
-//                Logic.restartGame();
-//            }
-//        }
+        Timer {
+            running: messageDisplay.visible
+            onTriggered: {
+                messageDisplay.visible = false;
+                Interact.resetField();
+            }
+        }
     }
 }

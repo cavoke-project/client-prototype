@@ -144,10 +144,12 @@ QString tictactoelogic::processAction(const QString &jsonMove) {
         }
         makeMove(pos, 'X');
         if (winner(board)) {
+            running = false;
             return "X wins";
         }
         computerTurn();
         if (winner(board)) {
+            running = false;
             return "O wins";
         }
         return "Nothing or draw";

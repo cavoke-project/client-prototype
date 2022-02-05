@@ -29,8 +29,9 @@ public:
     
     QString processAction(const QString &jsonMove);
 
-private:
     bool running = false;
+
+private:
     double difficulty = 1.0;
     std::random_device rd;
     std::mt19937 gen;
