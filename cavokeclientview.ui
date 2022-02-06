@@ -39,7 +39,7 @@
    <widget class="QPushButton" name="selectAppPathButton">
     <property name="geometry">
      <rect>
-      <x>500</x>
+      <x>490</x>
       <y>150</y>
       <width>131</width>
       <height>25</height>
@@ -60,6 +60,19 @@
     </property>
     <property name="text">
      <string>Run App</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="loadZipButton">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>150</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Load ZIP</string>
     </property>
    </widget>
   </widget>

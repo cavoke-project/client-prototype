@@ -6,15 +6,16 @@
 #include <QDir>
 
 namespace cache_manager {
-    const QDir CACHE_DIR = QDir(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation));
-    const QDir APPS_DIR = QDir(CACHE_DIR.filePath("apps"));
+    const QDir CACHE_DIR = QDir(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation)).filePath(
+            "cavoke-client");
+    const QDir APPS_DIR = CACHE_DIR.filePath("apps");
     const int BUFFER_SIZE = 1'000'000;
 
     QString get_cached_app_path(QString app_name);
 
     QString save_zip_to_cache(QFile archive);
 
-    void unzip_to_folder(QFile archive, const QDir &dest);
+    void unzip_to_folder(QFile &archive, const QDir &dest);
 
 
 }
